@@ -108,23 +108,25 @@
 
 
 
-  <meta name="description" content="我是程序员，可以改变世界的那种">
-<meta property="og:type" content="website">
-<meta property="og:title" content="isHappyCoder">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="Redis安装1234wget http://download.redis.io/releases/redis-5.0.2.tar.gztar xzf redis-5.0.2.tar.gzcd redis-5.0.2make make完后 redis-2.8.17目录下会出现编译后的redis服务程序redis-server,还有用于测试的客户端程序redis-cli,两个程序位于安装目录 src">
+<meta name="keywords" content="redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis学习笔记">
+<meta property="og:url" content="http://yoursite.com/2018/12/10/redis学习笔记/index.html">
 <meta property="og:site_name" content="isHappyCoder">
-<meta property="og:description" content="我是程序员，可以改变世界的那种">
+<meta property="og:description" content="Redis安装1234wget http://download.redis.io/releases/redis-5.0.2.tar.gztar xzf redis-5.0.2.tar.gzcd redis-5.0.2make make完后 redis-2.8.17目录下会出现编译后的redis服务程序redis-server,还有用于测试的客户端程序redis-cli,两个程序位于安装目录 src">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-11T08:09:14.204Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="isHappyCoder">
-<meta name="twitter:description" content="我是程序员，可以改变世界的那种">
+<meta name="twitter:title" content="redis学习笔记">
+<meta name="twitter:description" content="Redis安装1234wget http://download.redis.io/releases/redis-5.0.2.tar.gztar xzf redis-5.0.2.tar.gzcd redis-5.0.2make make完后 redis-2.8.17目录下会出现编译后的redis服务程序redis-server,还有用于测试的客户端程序redis-cli,两个程序位于安装目录 src">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/10/redis学习笔记/">
 
 
 
@@ -134,7 +136,7 @@
   };
 </script>
 
-  <title>isHappyCoder</title>
+  <title>redis学习笔记 | isHappyCoder</title>
   
 
 
@@ -183,8 +185,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -221,7 +222,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
 
     
     
@@ -317,9 +318,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -351,10 +352,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/10/redis学习笔记/" class="post-title-link" itemprop="http://yoursite.com/index.html">redis学习笔记</a>
+          <h1 class="post-title" itemprop="name headline">redis学习笔记
               
             
           </h1>
@@ -447,9 +445,7 @@
       
 
       
-        
-          
-            <h3 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.redis.io/releases/redis-5.0.2.tar.gz</span><br><span class="line">tar xzf redis-5.0.2.tar.gz</span><br><span class="line">cd redis-5.0.2</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+        <h3 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.redis.io/releases/redis-5.0.2.tar.gz</span><br><span class="line">tar xzf redis-5.0.2.tar.gz</span><br><span class="line">cd redis-5.0.2</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
 <p>make完后 redis-2.8.17目录下会出现编译后的redis服务程序redis-server,还有用于测试的客户端程序redis-cli,两个程序位于安装目录 src 目录下,下面启动redis服务.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd src</span><br><span class="line">./redis-server</span><br></pre></td></tr></table></figure>
 <p>注意这种方式启动redis 使用的是默认配置。也可以通过启动参数告诉redis使用指定配置文件使用下面命令启动。</p>
@@ -602,8 +598,6 @@
 </ol>
 <p>​    <strong>include /path/to/local.conf</strong></p>
 
-          
-        
       
     </div>
 
@@ -624,322 +618,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/08/教你如何搭建github-pages个人博客/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="isHappyCoder">
-      <meta itemprop="description" content="我是程序员，可以改变世界的那种">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="isHappyCoder">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/08/教你如何搭建github-pages个人博客/" class="post-title-link" itemprop="http://yoursite.com/index.html">教你如何搭建github-pages个人博客</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-08 16:16:28" itemprop="dateCreated datePublished" datetime="2018-12-08T16:16:28+08:00">2018-12-08</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-10 15:04:10" itemprop="dateModified" datetime="2018-12-10T15:04:10+08:00">2018-12-10</time>
-              
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/github-pages/" itemprop="url" rel="index"><span itemprop="name">github pages</span></a></span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/redis/" rel="tag"># redis</a>
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="使用github-pages-GitHub-Desktop"><a href="#使用github-pages-GitHub-Desktop" class="headerlink" title="使用github pages + GitHub Desktop"></a>使用github pages + GitHub Desktop</h2><h3 id="注册github账号"><a href="#注册github账号" class="headerlink" title="注册github账号"></a>注册github账号</h3><p>打开站点<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a>注册一个账号</p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/sign-up.jpg" alt="sign-up"></p>
-<p>注册完后别急着关掉页面，先选择free来明确你<del>老子就是冲着免费来的</del>态度，然后甭管别的，直接点击下面绿色的<em>Finish sign up</em></p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/free.jpg" alt="free"></p>
-<p>接着，到你的邮箱验证账号，这样你才能之后生成你的个人主页</p>
-<h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><p>接下来到这个页面去创建一个新仓库<br><a href="https://github.com/new" target="_blank" rel="noopener">https://github.com/new</a></p>
-<p>这个新仓库就将是存放你即将拥有的博客的地方</p>
-<p>注意，你的仓库名不能随便取，这样会导致github混乱，取名的格式应该为“用户名.github.io”</p>
-<p>后面的操作照配图做就可以了</p>
-<p> <img src="/2018/12/08/教你如何搭建github-pages个人博客/build-repository.jpg" alt="创建仓库"></p>
-<h3 id="进入仓库设置"><a href="#进入仓库设置" class="headerlink" title="进入仓库设置"></a>进入仓库设置</h3><p>建完仓库后，在当前页面右边选择Settings，进入设置页面，在这里生成你的github pages</p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/settings.jpg" alt="配置仓库"></p>
-<h3 id="自动生成博客"><a href="#自动生成博客" class="headerlink" title="自动生成博客"></a>自动生成博客</h3><p>在设置页面往下拉，在github pages那一栏点击“<strong>launch automatic page generator</strong>”</p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/generate.jpg" alt="配置博客"></p>
-<h3 id="编辑用户界面"><a href="#编辑用户界面" class="headerlink" title="编辑用户界面"></a>编辑用户界面</h3><p>到这一步，其实是让你编辑你的页面上所展示的信息，如果你就只想有这一面的话，你就可以开始编辑了</p>
-<p>title是页面的标题<br>tagline是页面宣传词（这么理解吧）<br>body就是正文了</p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/edit1.jpg" alt="设置博客"></p>
-<p>记住编辑是用markdown语言，如果你编辑完了（如果你要想有我这样的有很多页面的博客事实上根本不用管它），直接点下面的绿色按钮，“<strong>continue to layouts</strong>”</p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/edit2.jpg" alt="选择模板"></p>
-<h3 id="公布页面"><a href="#公布页面" class="headerlink" title="公布页面"></a>公布页面</h3><p>这一步对于只要一个展示页面的同学来说，应该算是终结了，选择一个喜欢的主题模板，然后点击“<strong>Publish page</strong>”，你的页面就公布出来了！</p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/choose-themes.jpg" alt="选择主题"></p>
-<p>如果还想继续做博客，那就继续看吧。</p>
-<h3 id="预览页面"><a href="#预览页面" class="headerlink" title="预览页面"></a>预览页面</h3><p>在继续教程前，你可以先预览一下你的页面，但实际你最后做出的效果会和这个比起来好几百倍，但你可以先确认一下能不能显示出页面来</p>
-<h3 id="下载安装github"><a href="#下载安装github" class="headerlink" title="下载安装github"></a>下载安装github</h3><p>下载属于你的系统的github，并安装</p>
-<p>Windows：<a href="https://windows.github.com/" target="_blank" rel="noopener">https://windows.github.com/</a></p>
-<p>Mac： <a href="https://mac.github.com/" target="_blank" rel="noopener">https://mac.github.com/</a></p>
-<p>我之后就用Windows示范了</p>
-<h3 id="克隆你的仓库"><a href="#克隆你的仓库" class="headerlink" title="克隆你的仓库"></a>克隆你的仓库</h3><p>登录你的账号，在左上角点击“<strong>+</strong>”，然后选择“<strong>clone</strong>”，点击存放你博客的仓库，把它克隆到本地，并选择存放克隆文件位置，一般默认就好</p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/clone.jpg" alt="克隆仓库"></p>
-<p>默认的位置在我的文档下的github文件夹里</p>
-<h3 id="选择主题框架"><a href="#选择主题框架" class="headerlink" title="选择主题框架"></a>选择主题框架</h3><p>这时候，你就该真正考虑一下你的博客主题风格了，如果你前端开发的功底不好，就不建议频繁更换主题了，虽然要改也不是不行，只是要折腾就是了</p>
-<p>到这个网站选择你喜欢的模板<br><a href="http://jekyllthemes.org/" target="_blank" rel="noopener">http://jekyllthemes.org/</a></p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/themes-serious.jpg" alt="模板"></p>
-<p>我就以这套模板为范例来进行教程，因为这个极其精简，可塑性（后期更改性）极强，推荐一下<br><a href="http://jekyllthemes.org/themes/cool-concise-high-end/" target="_blank" rel="noopener">http://jekyllthemes.org/themes/cool-concise-high-end/</a></p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/cool-concise-high-end.jpg" alt="下载模板"></p>
-<p>点击“<strong>downlod</strong>”，把它下载下来吧</p>
-<h3 id="应用主题"><a href="#应用主题" class="headerlink" title="应用主题"></a>应用主题</h3><p>打开存放你克隆下来仓库的文件夹，把里面的文件全部都删了（没错），除了隐藏文件夹“<strong>.git</strong>”不要删就好了，然后把模板里的东西全部拖到你的原博客仓库里</p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/apply.jpg" alt="apply"></p>
-<h3 id="配置博客"><a href="#配置博客" class="headerlink" title="配置博客"></a>配置博客</h3><p>我先简单介绍一下这个仓库里的内容，你根据自身需要用文本编辑器来修改内容</p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/list.jpg" alt="配置博客"></p>
-<ul>
-<li>index.html：这是你博客的主页面，里面的内容就是你的主页了</li>
-<li>_config.yml：这是你博客的基本配置文件，里面有你博客的名字，以及存放博主的一些基本信息</li>
-<li>_layouts：这文件夹里面存放你每个页面的设计，一般有default.html（默认页面）和posts.html（博文页面）</li>
-<li>_includes：这个文件夹里的的内容将会通用到你博客每个页面，起到一种便利的作用</li>
-<li>_posts：这里面装的就是你的博文啦，记住，要用markdown语法写，要不上传会失败的。</li>
-</ul>
-<p>那么以上就是一个Jekyll规范的博客的基本内容了，想想也不难吧</p>
-<h3 id="上传到github"><a href="#上传到github" class="headerlink" title="上传到github"></a>上传到github</h3><p>现在你已经把博客基本配置完成了，那么就该把它上传到github公布吧</p>
-<p>打开github软件，你会发现changes那栏多了数字，这就是你本地文件发生改变数目的情况，在“<strong>summary</strong>”随便写串东西记录一下，然后按“<strong>commit to master</strong>”，等“<strong>Sync</strong>”出现数字后，你就戳那里同步到github吧！</p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/upload.jpg" alt="upload"></p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/sync.jpg" alt="sync"></p>
-<h2 id="使用github-pages-Hexo搭建博客"><a href="#使用github-pages-Hexo搭建博客" class="headerlink" title="使用github pages + Hexo搭建博客"></a>使用github pages + Hexo搭建博客</h2><h3 id="下载安装node-js"><a href="#下载安装node-js" class="headerlink" title="下载安装node.js"></a>下载安装node.js</h3><p>node.js下载地址及安装教程:<a href="http://www.runoob.com/nodejs/nodejs-install-setup.html" target="_blank" rel="noopener">http://www.runoob.com/nodejs/nodejs-install-setup.html</a></p>
-<p><strong>需要注意的是node.js的版本不要太老旧，要和Hexo的版本相匹配否则会导致整个环境的瘫痪 </strong></p>
-<h3 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h3><p>git下载地址<a href="https://git-scm.com/download/" target="_blank" rel="noopener">https://git-scm.com/download/ </a> git的安装非常简单一直点击“下一步”即可</p>
-<h3 id="安装Hexo环境"><a href="#安装Hexo环境" class="headerlink" title="安装Hexo环境"></a>安装Hexo环境</h3><p>桌面右键鼠标，点击Git Bash Here，输入npm命令即可安装</p>
-<p>npm install hexo-cli -g    安装hexo。</p>
-<p>npm install hexo-deployer-git –save   安装hexo部署到git page的deployer：grave2015 </p>
-<h3 id="Hexo初始化配置"><a href="#Hexo初始化配置" class="headerlink" title="Hexo初始化配置"></a>Hexo初始化配置</h3><p>安装完成后，根据自己喜好建立目录（如F:\Blog\Hexo），直接进入F:\Blog\Hexo文件夹下右键鼠标，点击Git Bash Here，进入Git命令框，执行” $ hexo init “,初始化 Hexo 完成后，Hexo 将会在指定文件夹中新建所需要的文件。</p>
-<h3 id="本地查看效果"><a href="#本地查看效果" class="headerlink" title="本地查看效果"></a>本地查看效果</h3><p>执行 hexo generate，hexo server执行完即可登录localhost:4000查看效果。</p>
-<h3 id="配置SSH密钥"><a href="#配置SSH密钥" class="headerlink" title="配置SSH密钥"></a>配置SSH密钥</h3><p>配置Github的SSH密钥可以让本地git项目与远程的github建立联系，让我们在本地写了代码之后直接</p>
-<p>通过git操作就可以实现本地代码库与Github代码库同步。操作如下：</p>
-<p>第一步、看看是否存在SSH密钥(keys)</p>
-<p>首先，我们需要看看是否看看本机是否存在SSH keys,打开Git Bash,并运行:</p>
-<p>$ cd ~/. ssh </p>
-<p>检查你本机用户home目录下是否存在.ssh目录</p>
-<p>如果，不存在此目录，则进行第二步操作，否则，你本机已经存在ssh公钥和私钥，可以略过第二步，</p>
-<p>直接进入第三步操作。</p>
-<p>第二步、创建一对新的SSH密钥(keys)</p>
-<p>$ssh-keygen -t rsa -C “<a href="mailto:your_email@example.com" target="_blank" rel="noopener">your_email@example.com</a>“</p>
-<p>#这将按照你提供的邮箱地址，创建一对密钥</p>
-<p>Generating public/private rsa key pair.</p>
-<p>Enter file in which to save the key (/c/Users/you/.ssh/id_rsa): [Press enter]</p>
-<p>直接回车，则将密钥按默认文件进行存储。此时也可以输入特定的文件名，比</p>
-<p>如/c/Users/you/.ssh/github_rsa</p>
-<p>接着，根据提示，你需要输入密码和确认密码（不输入也可）。相关提示如下：</p>
-<p>Enter passphrase (empty for no passphrase): [Type a passphrase]</p>
-<p>Enter same passphrase again: [Type passphrase again]</p>
-<p>输入完成之后，屏幕会显示如下信息：</p>
-<p>Your identification has been saved in /c/Users/you/.ssh/id_rsa.</p>
-<p>Your public key has been saved in /c/Users/you/.ssh/id_rsa.pub.</p>
-<p>The key fingerprint is:</p>
-<p>01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db <a href="mailto:your_email@example.com" target="_blank" rel="noopener">your_email@example.com</a></p>
-<p>第三步、在GitHub账户中添加你的公钥</p>
-<p>在检查你本机用户home目录下的.ssh目录找到 “ id_rsa.pub “文件复制里面的全部内容。 </p>
-<p>登陆GitHub,进入你的Account Settings.</p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/20180416190336365.png" alt=""></p>
-<p>选择SSH Keys</p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/20180416190413877.png" alt=""></p>
-<p>3.粘贴密钥，添加即可</p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/20180416190442651.png" alt=""></p>
-<p>第四步、测试<br>可以输入下面的命令，看看设置是否成功，<a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>的部分不要修改：</p>
-<p>$ ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
-<p>如果是下面的反馈：</p>
-<p>The authenticity of host ‘github.com (207.97.227.239)’ can’t be established.</p>
-<p>RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.</p>
-<p>Are you sure you want to continue connecting (yes/no)?</p>
-<p>不要紧张，输入yes就好，然后会看到：</p>
-<p>第五步、设置用户信息</p>
-<p>现在你已经可以通过SSH链接到GitHub了，还有一些个人信息需要完善的。 Git会根据用户的名字和邮</p>
-<p>箱来记录提交。GitHub也是用这些信息来做权限的处理，输入下面的代码进行个人信息的设置，把名</p>
-<p>称和邮箱替换成你自己的，名字根据自己的喜好自己取，而不是GitHub的昵称。</p>
-<p>第五步、设置用户信息</p>
-<p>现在你已经可以通过SSH链接到GitHub了，还有一些个人信息需要完善的。 Git会根据用户的名字和邮</p>
-<p>箱来记录提交。GitHub也是用这些信息来做权限的处理，输入下面的代码进行个人信息的设置，把名</p>
-<p>称和邮箱替换成你自己的，名字根据自己的喜好自己取，而不是GitHub的昵称。</p>
-<p>$ git config –global user.name “ryanlijianchang”//用户名</p>
-<p>$ git config –global user.email  “<a href="mailto:liji.anchang@163.com" target="_blank" rel="noopener">liji.anchang@163.com</a>“//填写</p>
-<h3 id="将本地的Hexo文件更新到Github的库中"><a href="#将本地的Hexo文件更新到Github的库中" class="headerlink" title="将本地的Hexo文件更新到Github的库中"></a>将本地的Hexo文件更新到Github的库中</h3><p>第一步、登录Github打开自己的项目 username.github.io</p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/20180416190724402.png" alt=""></p>
-<p>第二步、打开之后，点击SSH，选择SSH类型地址</p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/20180416190724402.png" alt=""></p>
-<p>第三步、复制地址</p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/20180416190911491.jpg" alt="-"></p>
-<p>第四步、打开你一开始创建的Hexo文件夹（如F:\Blog\Hexo），用记事本打开刚文件夹下的_config.yml文件</p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/20180416190938241.png" alt=""></p>
-<p>第五步、在配置文件里作如下修改，保存</p>
-<p><img src="/2018/12/08/教你如何搭建github-pages个人博客/20180416191018411.jpg" alt=""></p>
-<p>第六步、在Hexo文件夹下执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>或者直接执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-<h3 id="克隆主题"><a href="#克隆主题" class="headerlink" title="克隆主题"></a>克隆主题</h3><p>再打开Hexo文件夹下的themes目录（F:\Blog\hexo\themes），右键Git Bash，在命令行输入:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> https:<span class="comment">//github.com/iissnan/hexo-theme-next(此处地址替换成你需要使用的主题的地址)</span></span><br></pre></td></tr></table></figure>
-<h3 id="修改Hexo配置文件"><a href="#修改Hexo配置文件" class="headerlink" title="修改Hexo配置文件"></a>修改Hexo配置文件</h3><p>下载完成后，打开Hexo文件夹下的配置文件<code>_config.yml</code></p>
-<p>修改参数为：<code>theme: hexo-theme-next</code></p>
-<h3 id="部署主题，本地查看效果"><a href="#部署主题，本地查看效果" class="headerlink" title="部署主题，本地查看效果"></a>部署主题，本地查看效果</h3><p>返回Hexo目录，右键Git Bash，输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<h3 id="如果效果满意，将它部署到Github上"><a href="#如果效果满意，将它部署到Github上" class="headerlink" title="如果效果满意，将它部署到Github上"></a>如果效果满意，将它部署到Github上</h3><p>打开Hexo文件夹，右键Git Bash，输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean   (必须要，不然有时因为缓存问题，服务器更新不了主题)</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-<p>在博客写文章<br>一、用hexo发表新文章</p>
-<p>$ hexo n “文章标题” </p>
-<p>其中 我的家 为文章标题，执行命令 hexo n “我的家” 后，会在项目 </p>
-<p>\Hexo\source_posts 中生成 我的家.md文件，用编辑器打开编写即可。</p>
-<p>当然，也可以直接在\Hexo\source_posts中新建一个md文件，我就是这么做的。 写完</p>
-<p>后，推送到服务器上，执行以下命令即可在我们的站点看到新的文章。</p>
-<p>$ hexo g #生成</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/08/教你如何搭建github-pages个人博客/" rel="next" title="教你如何搭建github-pages个人博客">
+                <i class="fa fa-chevron-left"></i> 教你如何搭建github-pages个人博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -949,14 +657,15 @@
   </article>
 
 
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -977,8 +686,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -1054,6 +772,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis安装"><span class="nav-number">1.</span> <span class="nav-text">Redis安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis配置"><span class="nav-number">2.</span> <span class="nav-text">Redis配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在redis-cli中编辑配置"><span class="nav-number">3.</span> <span class="nav-text">在redis-cli中编辑配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis-conf参数说明"><span class="nav-number">4.</span> <span class="nav-text">redis.conf参数说明</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1189,6 +923,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
 
   
 
