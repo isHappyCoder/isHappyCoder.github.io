@@ -396,7 +396,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-11 20:14:27" itemprop="dateModified" datetime="2018-12-11T20:14:27+08:00">2018-12-11</time>
+                <time title="修改时间：2018-12-17 19:31:33" itemprop="dateModified" datetime="2018-12-17T19:31:33+08:00">2018-12-17</time>
               
             
           </span>
@@ -613,6 +613,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TYPE key</span><br></pre></td></tr></table></figure>
 <p>当储存的字符串为整型的字符串，redis提供了INCR命令可以使键值自增，并返回自增后的键值，当操作的键值不存在时，会自动创建并自增，当操作的键值不是整型时会报错。    </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INCR num</span><br><span class="line">返回:(Integer)1</span><br><span class="line">INCR num</span><br><span class="line">返回:(Integer)2</span><br></pre></td></tr></table></figure>
+<p>增加指定整数,INCRBY 与 INCR 一样，只不过INCR每次只能递增1，而INCRBY 每次可以递增increment 后设置的值，例将key：num 每次递增2.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">INCRBY key increment</span><br><span class="line">INCRBY　num 2</span><br><span class="line">(INteger) 2</span><br><span class="line">INCRBY　num 3</span><br><span class="line">(INteger) 5</span><br></pre></td></tr></table></figure>
+<p>当储存的字符串为整型的字符串，redis提供了DECR命令可以使键值自减，并返回自减后的键值，当操作的键值不存在时，会自动创建并自减，当操作的键值不是整型时会报错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DECR num</span><br><span class="line">(Integer) -1</span><br><span class="line">DECR num</span><br><span class="line">(Integer) -2</span><br></pre></td></tr></table></figure>
+<p>DECRBY key decrment与DECR用法相似，DECRBY key decrment 可以使键值减少 decrment 后设置的数值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DECRBY　num 3</span><br><span class="line">(Integer) -3</span><br><span class="line">DECRBY num 2</span><br><span class="line">(Integer) -5</span><br></pre></td></tr></table></figure>
 
           
         
