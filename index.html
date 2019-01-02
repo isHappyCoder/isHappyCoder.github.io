@@ -396,7 +396,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-17 19:31:33" itemprop="dateModified" datetime="2018-12-17T19:31:33+08:00">2018-12-17</time>
+                <time title="修改时间：2019-01-02 19:26:02" itemprop="dateModified" datetime="2019-01-02T19:26:02+08:00">2019-01-02</time>
               
             
           </span>
@@ -601,7 +601,7 @@
 <li>指定包含其它的配置文件，可以在同一主机上多个Redis实例之间使用同一份配置文件，而同时各个实例又拥有自己的特定配置文件</li>
 </ol>
 <p>​    <strong>include /path/to/local.conf</strong></p>
-<h2 id="redis常用的命令"><a href="#redis常用的命令" class="headerlink" title="redis常用的命令"></a>redis常用的命令</h2><p>添加一个键值为”bar”,value为：”1”</p>
+<h3 id="redis常用的命令"><a href="#redis常用的命令" class="headerlink" title="redis常用的命令"></a>redis常用的命令</h3><h4 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h4><p>添加一个键值为”bar”,value为：”1”</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET bar 1</span><br></pre></td></tr></table></figure>
 <p>查看redis中所有的键：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">KEYS *</span><br></pre></td></tr></table></figure>
@@ -619,6 +619,73 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DECR num</span><br><span class="line">(Integer) -1</span><br><span class="line">DECR num</span><br><span class="line">(Integer) -2</span><br></pre></td></tr></table></figure>
 <p>DECRBY key decrment与DECR用法相似，DECRBY key decrment 可以使键值减少 decrment 后设置的数值</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DECRBY　num 3</span><br><span class="line">(Integer) -3</span><br><span class="line">DECRBY num 2</span><br><span class="line">(Integer) -5</span><br></pre></td></tr></table></figure>
+<p>增加指定浮点数：INCRBYFLOAT  key  increment</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SET num 1</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; GET num </span><br><span class="line">&quot;1&quot;</span><br><span class="line">127.0.0.1:6379&gt; INCRBYFLOAT num 5.6</span><br><span class="line">&quot;6.6&quot;</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<p>向尾部追加值：APPEND key  value，在APPEND　key “ Word!”  中加入空格，必须使用双引号区分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SET key Hello</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; GET key</span><br><span class="line">&quot;Hello&quot;</span><br><span class="line">127.0.0.1:6379&gt; APPEND key &quot; Word!&quot;</span><br><span class="line">(integer) 11</span><br><span class="line">127.0.0.1:6379&gt; GET key</span><br><span class="line">&quot;Hello Word!&quot;</span><br></pre></td></tr></table></figure>
+<p>返回键值长度：STRLEN key 如果键值不存在则返回0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; STRLEN key</span><br><span class="line">(integer) 11</span><br><span class="line">127.0.0.1:6379&gt; STRLEN 22</span><br><span class="line">(integer) 0</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<p>同时获得/设置多个键：    获得:MGET key1 key2  key3     设置 ：MSET key1 v1 key2 v2 key3 v3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; MSET key1 v1 key2 v2 key3 v3</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; MGET key1 key2 key3</span><br><span class="line">1) &quot;v1&quot;</span><br><span class="line">2) &quot;v2&quot;</span><br><span class="line">3) &quot;v3&quot;</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<p>位操作：</p>
+<p>GETBIT key index</p>
+<p>SETBIT key offset value</p>
+<p>BITCOUNT key  【start】【end】</p>
+<p>BITOP operation destkey key [key……]</p>
+<p>GETBIT key index 可以获得一个字符串类型键制定位置的二进制位(0或1),索引从0开始，如果要获取的二进制位超出索引的长度，则返回0。</p>
+<p>首先将 key 的value 赋值为 bar，bar的二进制表现形式如下：</p>
+<p><img src="/2018/12/10/redis学习笔记/bar.png" alt="bar的二进制"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SET key bar</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; GETBIT key 0</span><br><span class="line">(integer) 0</span><br><span class="line">127.0.0.1:6379&gt; GETBIT key 6</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure>
+<p>SETBIT  key  value  :可以设置字符串类型键制定位置的二进制位的值，返回值是该位置的就值，例如：</p>
+<p>我们将key 为bar的键的值的二进制形式的第六位设置0，第七位设为1，bar则会变为aar。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SETBIT key 6 0</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; SETBIT key 7 1</span><br><span class="line">(integer) 0</span><br><span class="line">127.0.0.1:6379&gt; GET key</span><br><span class="line">&quot;aar&quot;</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<p>BITCOUNT 可以获得键值是字符串类型的二进制位是1的个数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SET key bar</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; BITCOUNT key</span><br><span class="line">(integer) 10</span><br></pre></td></tr></table></figure>
+<p>可以通过参数来限制统计字节的范围，如我们只希望统计前两个字节的即“ba”，的二进制位的1的个数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; BITCOUNT key 0 1</span><br><span class="line">(integer) 6</span><br></pre></td></tr></table></figure>
+<p>BITOP 可以对多个字符串类型的键进行运算，并将结果存储在destkey的键值中。BITOP支持的运算有，AND，OR，XOR，NOT。例：对bar 和  aar 进行 OR 运算。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SET foo1 bar</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; SET foo2 aar</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; BITOP OR destkey foo1 foo2</span><br><span class="line">(integer) 3</span><br><span class="line">127.0.0.1:6379&gt; GET destkey</span><br><span class="line">&quot;car&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/12/10/redis学习笔记/OR运算过程.png" alt="OR运算的过程"></p>
+<h4 id="散列类型"><a href="#散列类型" class="headerlink" title="散列类型"></a>散列类型</h4><p>散列类型不能嵌套其它的数据类型，一个散列类型可以包含232-1个字段，除散列类型外redis的其它的数据的类型都不支持数据类型的嵌套，比如集合类型的每个每个元素都只能字符串，不能是其他的集合或散列。</p>
+<p>HSET key field value 添加一个散列类型的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; HSET car:1001 name BMW</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; HGET car:1001 name</span><br><span class="line">&quot;BMW&quot;</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<p>HGET key field  查看散列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; HSET car:1001 name BMW</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; HGET car:1001 name</span><br><span class="line">&quot;BMW&quot;</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<p>HMSET key field1 value1 field2  value2   key field3 value3 批量添加多个散列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; HMSET key price 20000 type jiaoche </span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; HMGET key price type</span><br><span class="line">1) &quot;20000&quot;</span><br><span class="line">2) &quot;jiaoche&quot;</span><br></pre></td></tr></table></figure>
+<p>HMGET key  field1 field2 …. 批量获得多个散列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; HMSET key price 20000 type jiaoche </span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; HMGET key price type</span><br><span class="line">1) &quot;20000&quot;</span><br><span class="line">2) &quot;jiaoche&quot;</span><br></pre></td></tr></table></figure>
+<p>HGETALL  key 查看key对应的所有散列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; HGETAll car:1001</span><br><span class="line">1) &quot;name&quot;</span><br><span class="line">2) &quot;BMW&quot;</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<p>HEXISTS key field 判断 字段是否存在，如果存在返回1，不存在返回0.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HEXISTS key  field</span><br></pre></td></tr></table></figure>
+<p>HINCRBY key  field  increment ,如果之前key不存在则自动建立，并默认 field的值为0，返回值为，增值后的字段。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; HINCRBY persion:1001 age 60</span><br><span class="line">(integer) 60</span><br><span class="line">127.0.0.1:6379&gt; HGET persion:1001 sex</span><br><span class="line">&quot;0&quot;</span><br><span class="line">127.0.0.1:6379&gt; HINCRBY persion:1001 age 60</span><br><span class="line">(integer) 120</span><br></pre></td></tr></table></figure>
+<p>HDEL key  field [field1 ,field2 ……….],删除一个或多个字段，如这个key的所有字段都被删除，则这个key也会被删除。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; HDEL persion:1001 age sex</span><br><span class="line">(integer) 2</span><br><span class="line">127.0.0.1:6379&gt; KEYS *</span><br><span class="line">(empty list or set)</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<p>只取字段值或字段名：HKEYS  key ，HVALS  key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; HKEYS persion:1001</span><br><span class="line">1) &quot;age&quot;</span><br><span class="line">2) &quot;sex&quot;</span><br><span class="line">127.0.0.1:6379&gt; HVALS persion:1001</span><br><span class="line">1) &quot;30&quot;</span><br><span class="line">2) &quot;0&quot;</span><br></pre></td></tr></table></figure>
+<p>获取字段数量：HLEN key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; HLEN persion:1001</span><br><span class="line">(integer) 2</span><br></pre></td></tr></table></figure>
+<h4 id="列表类型"><a href="#列表类型" class="headerlink" title="列表类型"></a>列表类型</h4><p>LPUSH  list  1，LPUSH list 2，LPUSH  3，4 , 在列表的左侧插入数据，列表的结构为 【4 3 2 1】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; LPUSH list 1</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; RPUSH list 2</span><br><span class="line">(integer) 2</span><br></pre></td></tr></table></figure>
+<p>RPUSH  list  1，RPUSH list 2，RPUSH  3，4 , 在列表的右侧插入数据，列表的结构为 【1 2 3 4】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; RPUSH list 3</span><br><span class="line">(integer) 3</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; RPUSH list 4</span><br><span class="line">(integer) 4</span><br></pre></td></tr></table></figure>
+<p>LPOP  key 弹出左边第一个元素，LPOP 执行的步骤分为两步，第一步删除最左边的第一个元素，第二步返回删除的值，已list[1 2 3 4] 为例     LPOP list 的返回值 1 经历弹栈后的list的结构：list [2 3 4]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; LPOP list</span><br><span class="line">&quot;1&quot;</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<p>RPOP 弹出列表右边的第一个元素:与LPOP的作用相似。RPOP list [1 2 3 4] 的结果是：4，经历RPOP之后的list的结构为：list [1 2 3]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; RPOP list</span><br><span class="line">&quot;4&quot;</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<p>获取list中的元素个数。LLEN list 如果列表不存在则 返回0    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; LLEN list</span><br><span class="line">(integer) 2</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<p>获得列表的片段：LRANGE  key  s tart  stop</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; LRANGE list 0 2</span><br><span class="line">1) &quot;2&quot;</span><br><span class="line">2) &quot;3&quot;</span><br></pre></td></tr></table></figure>
+<p>LRANGE  也支持负数索引,如-2是右面第一个元素，-1是右面第二个元素，以此类推。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; LRANGE list -2 -1</span><br><span class="line">1) &quot;2&quot;</span><br><span class="line">2) &quot;3&quot;</span><br></pre></td></tr></table></figure>
+<p>删除列表中指定的值 LREM key count value ，LREM命令会删除列表中前count个值为value的元素，返回值是实际删除的元素个数。根据count值的不同，LREM命令的执行方式会略有差异：</p>
+<p>当count＞0时LREM命令会从列表左边开始删除前count个值为value的元素；</p>
+<p>当count＜0时LREM 命令会从列表右边开始删除前count个值为value的元素；</p>
+<p>当count=0是LREM命令会删除所有值为value的元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; LRANGE list 0 -1</span><br><span class="line">1) &quot;2&quot;</span><br><span class="line">2) &quot;2&quot;</span><br><span class="line">3) &quot;2&quot;</span><br><span class="line">4) &quot;2&quot;</span><br><span class="line">5) &quot;3&quot;</span><br><span class="line">127.0.0.1:6379&gt; LREM list 2 3</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; LRANGE list 0 -1</span><br><span class="line">1) &quot;2&quot;</span><br><span class="line">2) &quot;2&quot;</span><br><span class="line">3) &quot;2&quot;</span><br><span class="line">4) &quot;2&quot;</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1086,7 +1153,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
