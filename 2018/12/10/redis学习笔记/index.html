@@ -119,7 +119,8 @@
 <meta property="og:image" content="http://yoursite.com/2018/12/10/redis学习笔记/bar.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/10/redis学习笔记/OR运算过程.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/10/redis学习笔记/缓存规则.png">
-<meta property="og:updated_time" content="2019-01-04T11:23:40.099Z">
+<meta property="og:image" content="http://yoursite.com/2018/12/10/redis学习笔记/任务队列.png">
+<meta property="og:updated_time" content="2019-01-18T06:48:51.774Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis学习笔记">
 <meta name="twitter:description" content="搭建redis环境Redis安装1234wget http://download.redis.io/releases/redis-5.0.2.tar.gztar xzf redis-5.0.2.tar.gzcd redis-5.0.2make make完后 redis-2.8.17目录下会出现编译后的redis服务程序redis-server,还有用于测试的客户端程序redis-cli,两个程序位">
@@ -398,7 +399,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-04 19:23:40" itemprop="dateModified" datetime="2019-01-04T19:23:40+08:00">2019-01-04</time>
+                <time title="修改时间：2019-01-18 14:48:51" itemprop="dateModified" datetime="2019-01-18T14:48:51+08:00">2019-01-18</time>
               
             
           </span>
@@ -646,7 +647,7 @@
 <p>BITOP 可以对多个字符串类型的键进行运算，并将结果存储在destkey的键值中。BITOP支持的运算有，AND，OR，XOR，NOT。例：对bar 和  aar 进行 OR 运算。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SET foo1 bar</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; SET foo2 aar</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; BITOP OR destkey foo1 foo2</span><br><span class="line">(integer) 3</span><br><span class="line">127.0.0.1:6379&gt; GET destkey</span><br><span class="line">&quot;car&quot;</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/12/10/redis学习笔记/OR运算过程.png" alt="OR运算的过程"></p>
-<h3 id="散列类型"><a href="#散列类型" class="headerlink" title="散列类型"></a>散列类型</h3><p>散列类型不能嵌套其它的数据类型，一个散列类型可以包含232-1个字段，除散列类型外redis的其它的数据的类型都不支持数据类型的嵌套，比如集合类型的每个每个元素都只能字符串，不能是其他的集合或散列。</p>
+<h4 id="散列类型"><a href="#散列类型" class="headerlink" title="散列类型"></a>散列类型</h4><p>散列类型不能嵌套其它的数据类型，一个散列类型可以包含232-1个字段，除散列类型外redis的其它的数据的类型都不支持数据类型的嵌套，比如集合类型的每个每个元素都只能字符串，不能是其他的集合或散列。</p>
 <p>HSET key field value 添加一个散列类型的</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; HSET car:1001 name BMW</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; HGET car:1001 name</span><br><span class="line">&quot;BMW&quot;</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
 <p>HGET key field  查看散列</p>
@@ -675,6 +676,16 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; LPOP list</span><br><span class="line">&quot;1&quot;</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
 <p>RPOP 弹出列表右边的第一个元素:与LPOP的作用相似。RPOP list [1 2 3 4] 的结果是：4，经历RPOP之后的list的结构为：list [1 2 3]</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; RPOP list</span><br><span class="line">&quot;4&quot;</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="任务队列"><a href="#任务队列" class="headerlink" title="任务队列"></a>任务队列</h4><p>BRPOP与RPOP相似，不同的是BRPOP只要列表中没有元素时BRPOP会一直阻塞住链接，直到有新元素加入。</p>
+<p>BRPOP 会接收两个参数，BRPOP 【键值】【时间】，时间的单位是秒，如果超过此时间还没获得新的元素的话，就会返回nil, 时间设置为 “0” 表示不限时间，意思是如果一直获得不到新的元素就一直阻塞下去.BRPOP的返回值是：<strong>键名和元素值</strong></p>
+<p>如下为列表 list 中没有元素时BRPOP处于阻塞的状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; BRPOP list 0</span><br></pre></td></tr></table></figure>
+<p>在另一个客户端中向list中加入新元素：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; LPUSH list c</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure>
+<p>这时BRPOP会由阻塞状态变为如下状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; BRPOP list 0</span><br><span class="line">1) &quot;list&quot;</span><br><span class="line">2) &quot;c&quot;</span><br><span class="line">(5.07s)</span><br></pre></td></tr></table></figure>
+<h4 id="优先级队列"><a href="#优先级队列" class="headerlink" title="优先级队列"></a>优先级队列</h4><p>BRPOP实现优先级队列，BRPOP可以接收多个参数,BRPOP key[key1 key2……] timeout， 例：</p>
+<p>BRPOP list1 list2 list3  0 的意思是如果监测多个键，如果所有键都没有元素则队列阻塞，如果其中有一个键有元素则弹出该键的元素，如果所有键都有元素，则会按照从左到右取第一个键的元素。</p>
 <p>获取list中的元素个数。LLEN list 如果列表不存在则 返回0    </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; LLEN list</span><br><span class="line">(integer) 2</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
 <p>获得列表的片段：LRANGE  key  s tart  stop</p>
@@ -789,6 +800,25 @@
 <p>ZINTERSTORE命令还能够通过WEIGHTS参数设置每个集合的权重，每个集合在参与计算时元素的分数会被乘上该集合的权重。例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZADD scoreA 1 a 2 b</span><br><span class="line">(integer) 2</span><br><span class="line">127.0.0.1:6379&gt; ZADD scoreB 10 a 20 b</span><br><span class="line">(integer) 2</span><br><span class="line">127.0.0.1:6379&gt; ZINTERSTORE scoreSum 2  scoreA scoreB WEIGHTS 0.1 0.1</span><br><span class="line">(integer) 2</span><br><span class="line">127.0.0.1:6379&gt; ZRANGE scoreSum 0 -1 WITHSCORES</span><br><span class="line">1) &quot;a&quot;</span><br><span class="line">2) &quot;1.1000000000000001&quot;</span><br><span class="line">3) &quot;b&quot;</span><br><span class="line">4) &quot;2.2000000000000002&quot;</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
 <p>另外还有一个命令与ZINTERSTORE命令的用法一样，名为ZUNIONSTORE，它的作用是计算集合间的并集。</p>
+<h3 id="发布-订阅模式"><a href="#发布-订阅模式" class="headerlink" title="发布/订阅模式"></a>发布/订阅模式</h3><p>除了任务队列之外redis还提供了 <strong>”发布/订阅(publish/subscribe)”</strong>模式。<strong>”发布/订阅(publish/subscribe)”</strong>模式同样可以实现线程间的通信，其原理是这样的：<strong>发布/订阅</strong>包含两种角色，发布者和订阅者，订阅者可以订阅一个或多个频道。发布者可以向指定频道发送消息，所有订阅此频道的订阅者都会收到此消息。</p>
+<p>发布者发布消息的命令是：PUBLISH ，用法是：PULISH channel  message  ，如向channel1 说了 “ hi “</p>
+<p>PUBLISH chcannel1 hi 返回值代表接受消息的<strong>订阅者</strong>的数量，没有订阅者接受返回0，发送出的消息不会被持久化，也就说，接收到新的消息之后之前的消息就找不到了。<strong>订阅</strong>频道的命令是，<strong>SUBSCRIBE 可以同时订阅多个频道</strong>用法是：SUBSCRIBE channel [channel1 channel2 channel3…….]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; PUBLISH channl chifan</span><br><span class="line">(integer) 0</span><br><span class="line">127.0.0.1:6379&gt; PUBLISH channl chifan</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Reading messages... (press Ctrl-C to quit)</span><br><span class="line">1) &quot;subscribe&quot;</span><br><span class="line">2) &quot;channl&quot;</span><br><span class="line">3) (integer) 1</span><br><span class="line">1) &quot;message&quot;</span><br><span class="line">2) &quot;channl&quot;</span><br><span class="line">3) &quot;chifan&quot;</span><br></pre></td></tr></table></figure>
+<p>执行SUBSCRIBE命令后客户端会进入订阅状态，处于此状态下客户端不能使用除<br>SUBSCRIBE/UNSUBSCRIBE/PSUBSCRIBE/PUNSUBSCRIBE这4个属于“发布/订阅”模式的命<br>令之外的命令（后面3个命令会在下面介绍），否则会报错。<br>进入订阅状态后客户端可能收到三种类型的回复。每种类型的回复都包含3个值，第一个<br>值是消息的类型，根据消息类型的不同，第二、三个值的含义也不同。消息类型可能的取值有：</p>
+<p>（1）Subscribe。表示订阅成功的反馈信息。第二个值是订阅成功的频道名称，第三个值是<br>当前客户端订阅的频道数量。</p>
+<p>（2）message。这个类型的回复是我们最关心的，它表示接收到的消息。第二个值表示产生<br>消息的频道名称，第三个值是消息的内容。</p>
+<p>（3）unsubscribe。表示成功取消订阅某个频道。第二个值是对应的频道名称，第三个值是当<br>前客户端订阅的频道数量，当此值为0时客户端会退出订阅状态，之后就可以执行其他非“发<br>布/订阅”模式的命令了。</p>
+<p>使用UNSUBSCRIBE命令可以取消订阅指定的频道，用法为:</p>
+<p>UNSUBSCRIBE[channel[channel …]]，如果不指定频道则会取消订阅所有频道①  。</p>
+<h4 id="按照规则订阅"><a href="#按照规则订阅" class="headerlink" title="按照规则订阅"></a>按照规则订阅</h4><p>除了可以使用SUBSCRIBE指定订阅频道之外，还可以使用PSUBSCRIBE命令订阅指定的规则。规则支持glob风格通配符格式。</p>
+<p>当订阅的频道 <strong>channel</strong> 没有消息时</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; PSUBSCRIBE channel?*</span><br><span class="line">Reading messages... (press Ctrl-C to quit)</span><br><span class="line">1) &quot;psubscribe&quot;</span><br><span class="line">2) &quot;channel?*&quot;</span><br><span class="line">3) (integer) 1</span><br></pre></td></tr></table></figure>
+<p>当订阅的频道有消息时</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; PUBLISH channel1 chiwanfan</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; PSUBSCRIBE channel?*</span><br><span class="line">Reading messages... (press Ctrl-C to quit)</span><br><span class="line">1) &quot;pmessage&quot;</span><br><span class="line">2) &quot;channel?*&quot;</span><br><span class="line">3) &quot;channel1&quot;</span><br><span class="line">4) &quot;chiwanfan&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>PSUBSCRIBE channel?*</strong>接收的四个值得意义为：</p>
+<p>第一个值表示这条消息是由PSUBSCRIBE接收的，第二个值表示接收的值使用的通配符，第三个表示消息来自哪个频道，第四个表示消息的内容。</p>
 <h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>SORT [DESC]  SORT 命令可以对列表类型，集合类型，排序默认从小到大，代表从大到小排序。</p>
 <p>SORT命令也可以对有序集合排序，对有序集合排序时会忽略有序集合元素的分数。只针对有序集合类型。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; LPUSH myList 8 6 4 7 3 9 2 1 </span><br><span class="line">(integer) 8</span><br><span class="line">127.0.0.1:6379&gt; SORT myList</span><br><span class="line">1) &quot;1&quot;</span><br><span class="line">2) &quot;2&quot;</span><br><span class="line">3) &quot;3&quot;</span><br><span class="line">4) &quot;4&quot;</span><br><span class="line">5) &quot;6&quot;</span><br><span class="line">6) &quot;7&quot;</span><br><span class="line">7) &quot;8&quot;</span><br><span class="line">8) &quot;9&quot;</span><br></pre></td></tr></table></figure>
@@ -841,6 +871,8 @@
 <p>如当maxmemory-policy设置为allkeys-lru时，一旦Redis占用的内存超过了限制值，Redis会不断地删除数据库中</p>
 <p>最近最少使用的键①  ，直到占用的内存小于限制值。<br>​    </p>
 <p>​    注释：①事实上Redis并不会准确地将整个数据库中最久未被使用的键删除，而是每次从<br>数据库中随机取3个键并删除这3个键中最久未被使用的键。删除生存时间最接近的键的实现<br>方法也是这样。“3”这个数字可以通过Redis的配置文件中的maxmemory-samples参数设置。</p>
+<h2 id="任务队列-1"><a href="#任务队列-1" class="headerlink" title="任务队列"></a>任务队列</h2><p>任务队列顾名思义就是<strong>传递任务的队列</strong>，与任务队列交互的实体有两类，一类是<strong>生产者</strong>，一类是<strong>消费者</strong>。生产者会将需要处理的任务放入队列中，而消费者则是不断地从任务队列中读入任务信息并执行.</p>
+<p><img src="/2018/12/10/redis学习笔记/任务队列.png" alt="任务队列"></p>
 
       
     </div>
@@ -886,6 +918,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/17/多线程/" rel="prev" title="多线程">
+                多线程 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -955,7 +991,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -972,7 +1008,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -991,7 +1029,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1026,7 +1066,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建redis环境"><span class="nav-number">1.</span> <span class="nav-text">搭建redis环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis安装"><span class="nav-number">1.1.</span> <span class="nav-text">Redis安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis配置"><span class="nav-number">1.2.</span> <span class="nav-text">Redis配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在redis-cli中编辑配置"><span class="nav-number">1.3.</span> <span class="nav-text">在redis-cli中编辑配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis-conf参数说明"><span class="nav-number">1.4.</span> <span class="nav-text">redis.conf参数说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis常用的命令"><span class="nav-number">2.</span> <span class="nav-text">redis常用的命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串类型"><span class="nav-number">2.1.</span> <span class="nav-text">字符串类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#散列类型"><span class="nav-number">2.2.</span> <span class="nav-text">散列类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表类型"><span class="nav-number">2.3.</span> <span class="nav-text">列表类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合类型"><span class="nav-number">2.4.</span> <span class="nav-text">集合类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有序集合"><span class="nav-number">2.5.</span> <span class="nav-text">有序集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序"><span class="nav-number">2.6.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BY参数：参考键，BY参数可以指定排序的条件：参照什么排序。"><span class="nav-number">2.6.1.</span> <span class="nav-text">BY参数：参考键，BY参数可以指定排序的条件：参照什么排序。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GET参数"><span class="nav-number">2.6.2.</span> <span class="nav-text">GET参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数STORE-result"><span class="nav-number">2.6.3.</span> <span class="nav-text">参数STORE result</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务"><span class="nav-number">3.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事务的实现方式"><span class="nav-number">3.1.</span> <span class="nav-text">事务的实现方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行事务时出现错误的处理方式"><span class="nav-number">3.2.</span> <span class="nav-text">执行事务时出现错误的处理方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#语法错误"><span class="nav-number">3.2.1.</span> <span class="nav-text">语法错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行错误"><span class="nav-number">3.2.2.</span> <span class="nav-text">运行错误</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WATCH命令介绍"><span class="nav-number">3.3.</span> <span class="nav-text">WATCH命令介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生存时间"><span class="nav-number">3.4.</span> <span class="nav-text">生存时间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现缓存"><span class="nav-number">4.</span> <span class="nav-text">实现缓存</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建redis环境"><span class="nav-number">1.</span> <span class="nav-text">搭建redis环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis安装"><span class="nav-number">1.1.</span> <span class="nav-text">Redis安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis配置"><span class="nav-number">1.2.</span> <span class="nav-text">Redis配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在redis-cli中编辑配置"><span class="nav-number">1.3.</span> <span class="nav-text">在redis-cli中编辑配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis-conf参数说明"><span class="nav-number">1.4.</span> <span class="nav-text">redis.conf参数说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis常用的命令"><span class="nav-number">2.</span> <span class="nav-text">redis常用的命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串类型"><span class="nav-number">2.1.</span> <span class="nav-text">字符串类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#散列类型"><span class="nav-number">2.1.1.</span> <span class="nav-text">散列类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表类型"><span class="nav-number">2.2.</span> <span class="nav-text">列表类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#任务队列"><span class="nav-number">2.2.1.</span> <span class="nav-text">任务队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优先级队列"><span class="nav-number">2.2.2.</span> <span class="nav-text">优先级队列</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合类型"><span class="nav-number">2.3.</span> <span class="nav-text">集合类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有序集合"><span class="nav-number">2.4.</span> <span class="nav-text">有序集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布-订阅模式"><span class="nav-number">2.5.</span> <span class="nav-text">发布/订阅模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#按照规则订阅"><span class="nav-number">2.5.1.</span> <span class="nav-text">按照规则订阅</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序"><span class="nav-number">2.6.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BY参数：参考键，BY参数可以指定排序的条件：参照什么排序。"><span class="nav-number">2.6.1.</span> <span class="nav-text">BY参数：参考键，BY参数可以指定排序的条件：参照什么排序。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GET参数"><span class="nav-number">2.6.2.</span> <span class="nav-text">GET参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数STORE-result"><span class="nav-number">2.6.3.</span> <span class="nav-text">参数STORE result</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务"><span class="nav-number">3.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事务的实现方式"><span class="nav-number">3.1.</span> <span class="nav-text">事务的实现方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行事务时出现错误的处理方式"><span class="nav-number">3.2.</span> <span class="nav-text">执行事务时出现错误的处理方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#语法错误"><span class="nav-number">3.2.1.</span> <span class="nav-text">语法错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行错误"><span class="nav-number">3.2.2.</span> <span class="nav-text">运行错误</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WATCH命令介绍"><span class="nav-number">3.3.</span> <span class="nav-text">WATCH命令介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生存时间"><span class="nav-number">3.4.</span> <span class="nav-text">生存时间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现缓存"><span class="nav-number">4.</span> <span class="nav-text">实现缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任务队列-1"><span class="nav-number">5.</span> <span class="nav-text">任务队列</span></a></li></ol></div>
             
 
           </div>
