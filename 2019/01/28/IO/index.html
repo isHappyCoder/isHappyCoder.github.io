@@ -108,27 +108,25 @@
 
 
 
-  <meta name="description" content="关于异常的一些总结并不是所有的异常都可以抛出去，举一个例子说明一下。  上面的例子就是一种只能捕获不能抛出的情况，正常情况下，使用wait(),需要处理一个InterruptException，但是，上述例子中的run(),是通过实现Runnable接口实现的，被复写的run()，没有抛异常，所以复写后的run(),也不能抛异常，否则会出现编译错误，这种情况下的异常只能try">
-<meta name="keywords" content="Exception">
+  <meta name="description" content="java IO 流​    java中的的流可以分为多种，从读，写的角度可以分为输入，输出流。从操作的单位来说可以分为，字符，字节流。其中字符流是针对处理文字而生。字节流就比较强大，可以处理多种类型的文件。 字符流常用基类： 123ReaderWriter 字节流常用基类： 123InputstreamOutputStream 这四个类派生出来的子类名通常都是以其父类作为后缀 使用Io的几个要点以">
+<meta name="keywords" content="java Io">
 <meta property="og:type" content="article">
-<meta property="og:title" content="异常">
-<meta property="og:url" content="http://yoursite.com/2019/01/24/异常/index.html">
+<meta property="og:title" content="IO">
+<meta property="og:url" content="http://yoursite.com/2019/01/28/IO/index.html">
 <meta property="og:site_name" content="isHappyCoder">
-<meta property="og:description" content="关于异常的一些总结并不是所有的异常都可以抛出去，举一个例子说明一下。  上面的例子就是一种只能捕获不能抛出的情况，正常情况下，使用wait(),需要处理一个InterruptException，但是，上述例子中的run(),是通过实现Runnable接口实现的，被复写的run()，没有抛异常，所以复写后的run(),也不能抛异常，否则会出现编译错误，这种情况下的异常只能try">
+<meta property="og:description" content="java IO 流​    java中的的流可以分为多种，从读，写的角度可以分为输入，输出流。从操作的单位来说可以分为，字符，字节流。其中字符流是针对处理文字而生。字节流就比较强大，可以处理多种类型的文件。 字符流常用基类： 123ReaderWriter 字节流常用基类： 123InputstreamOutputStream 这四个类派生出来的子类名通常都是以其父类作为后缀 使用Io的几个要点以">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2019/01/24/异常/异常举例说明.png">
-<meta property="og:updated_time" content="2019-01-24T11:27:51.553Z">
+<meta property="og:updated_time" content="2019-01-29T06:51:31.177Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="异常">
-<meta name="twitter:description" content="关于异常的一些总结并不是所有的异常都可以抛出去，举一个例子说明一下。  上面的例子就是一种只能捕获不能抛出的情况，正常情况下，使用wait(),需要处理一个InterruptException，但是，上述例子中的run(),是通过实现Runnable接口实现的，被复写的run()，没有抛异常，所以复写后的run(),也不能抛异常，否则会出现编译错误，这种情况下的异常只能try">
-<meta name="twitter:image" content="http://yoursite.com/2019/01/24/异常/异常举例说明.png">
+<meta name="twitter:title" content="IO">
+<meta name="twitter:description" content="java IO 流​    java中的的流可以分为多种，从读，写的角度可以分为输入，输出流。从操作的单位来说可以分为，字符，字节流。其中字符流是针对处理文字而生。字节流就比较强大，可以处理多种类型的文件。 字符流常用基类： 123ReaderWriter 字节流常用基类： 123InputstreamOutputStream 这四个类派生出来的子类名通常都是以其父类作为后缀 使用Io的几个要点以">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/24/异常/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/28/IO/">
 
 
 
@@ -138,7 +136,7 @@
   };
 </script>
 
-  <title>异常 | isHappyCoder</title>
+  <title>IO | isHappyCoder</title>
   
 
 
@@ -337,7 +335,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/24/异常/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/28/IO/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="isHappyCoder">
@@ -354,7 +352,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">异常
+          <h1 class="post-title" itemprop="name headline">IO
               
             
           </h1>
@@ -379,12 +377,24 @@
                 
               
 
-              <time title="创建时间：2019-01-24 16:11:21 / 修改时间：19:27:51" itemprop="dateCreated datePublished" datetime="2019-01-24T16:11:21+08:00">2019-01-24</time>
+              <time title="创建时间：2019-01-28 15:19:28" itemprop="dateCreated datePublished" datetime="2019-01-28T15:19:28+08:00">2019-01-28</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-01-29 14:51:31" itemprop="dateModified" datetime="2019-01-29T14:51:31+08:00">2019-01-29</time>
               
             
           </span>
@@ -401,7 +411,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Exception/" itemprop="url" rel="index"><span itemprop="name">Exception</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/java-Io/" itemprop="url" rel="index"><span itemprop="name">java Io</span></a></span>
 
                 
                 
@@ -435,10 +445,18 @@
       
 
       
-        <h2 id="关于异常的一些总结"><a href="#关于异常的一些总结" class="headerlink" title="关于异常的一些总结"></a>关于异常的一些总结</h2><p>并不是所有的异常都可以<strong>抛出去</strong>，举一个例子说明一下。</p>
-<p><img src="/2019/01/24/异常/异常举例说明.png" alt="异常举例说明"></p>
-<p>上面的例子就是一种只能捕获不能抛出的情况，正常情况下，使用<strong>wait()</strong>,需要处理一个<strong>InterruptException</strong>，但是，上述例子中的<strong>run()</strong>,是通过实现<strong>Runnable</strong>接口实现的，被复写的<strong>run()</strong>，没有抛异常，所以复写后的<strong>run()</strong>,也不能抛异常，否则会出现编译错误，这种情况下的异常只能<strong>try</strong></p>
-
+        <h2 id="java-IO-流"><a href="#java-IO-流" class="headerlink" title="java IO 流"></a>java IO 流</h2><p>​    java中的的流可以分为多种，从读，写的角度可以分为输入，输出流。从操作的单位来说可以分为，字符，字节流。其中字符流是针对处理文字而生。字节流就比较强大，可以处理多种类型的文件。</p>
+<p><strong>字符流常用基类：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Reader</span><br><span class="line"></span><br><span class="line">Writer</span><br></pre></td></tr></table></figure>
+<p><strong>字节流常用基类：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Inputstream</span><br><span class="line"></span><br><span class="line">OutputStream</span><br></pre></td></tr></table></figure>
+<p><strong>这四个类派生出来的子类名通常都是以其父类作为后缀</strong></p>
+<h3 id="使用Io的几个要点"><a href="#使用Io的几个要点" class="headerlink" title="使用Io的几个要点"></a>使用Io的几个要点</h3><p>以<strong>FileWriter</strong>为例。需要注意的是</p>
+<p><strong>1、在Io操作中，一般的写操作都是先将数据写入流（缓冲）中，如果想要将数据写入文件中需要再刷新流（缓冲），刷新缓冲一般使用flush().或close()也可以达到刷新缓冲的效果。flush()与close()的区别是，flush()之后流可以继续使用，close()之后流将不可用。</strong></p>
+<p><strong>2、使用完流资源之后必须关闭流资源。</strong></p>
+<p><strong>3、另需注意。向文件中写入文字时如果想要执行换行在换行处使用“/r/n”。在LINUX系统中系统可以  识别“/n” 来进行换行。但是在windows系统中有部分软件不能识别“/n”,比如记事本就不能识别“/n”，而会出现乱码的情况，所在windows中执行换行就要采用所有软件都能识别的“/r/n”来换行。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public FileWriter(String fileName,</span><br><span class="line">                  boolean append)</span><br><span class="line">           throws IOException根据给定的文件名以及指示是否附加写入数据的 boolean 值来构造 FileWriter 对象。 </span><br><span class="line"></span><br><span class="line">参数：</span><br><span class="line">fileName - 一个字符串，表示与系统有关的文件名。</span><br><span class="line">append - 一个 boolean 值，如果为 true，则将数据写入文件末尾处，而不是写入文件开始处。 </span><br><span class="line">抛出： </span><br><span class="line">IOException - 如果指定文件存在，但它是一个目录，而不是一个常规文件；或者该文件不存在，但无法创建它；抑或因为其他某些原因而无法打开它</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class  IoDemo&#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        FileWriter fw = null;</span><br><span class="line">        try &#123;</span><br><span class="line">                fw = new FileWriter(&quot;/demo.text&quot;,true);</span><br><span class="line">                //write()只是将数据写入流中，如果想将数据写入文件就需要刷新流。</span><br><span class="line">                //执行fluse().或close方法都可以达到刷新流（缓冲的效果）。</span><br><span class="line">                fw.write(&quot;abcd&quot;);</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;finally &#123;</span><br><span class="line">            /*此判断的意义在于：fw可能会初始化失败，比如 fw = new 	FileWriter(&quot;K：//demo.text&quot;,true); 的情况下fw就会初始化失败。但是finally&#123;&#125;内的内容必须要执行，所以在fw = new FileWriter(.....)，出现异常时，fw.close()就会报空指针异常。*/</span><br><span class="line">            if (fw!=null)&#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    fw.close();</span><br><span class="line">                &#125; catch (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -461,7 +479,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Exception/" rel="tag"># Exception</a>
+            <a href="/tags/java-Io/" rel="tag"># java Io</a>
           
         </div>
       
@@ -474,8 +492,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/17/多线程/" rel="next" title="多线程">
-                <i class="fa fa-chevron-left"></i> 多线程
+              <a href="/2019/01/24/异常/" rel="next" title="异常">
+                <i class="fa fa-chevron-left"></i> 异常
               </a>
             
           </div>
@@ -483,10 +501,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/28/IO/" rel="prev" title="IO">
-                IO <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -639,7 +653,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于异常的一些总结"><span class="nav-number">1.</span> <span class="nav-text">关于异常的一些总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#java-IO-流"><span class="nav-number">1.</span> <span class="nav-text">java IO 流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Io的几个要点"><span class="nav-number">1.1.</span> <span class="nav-text">使用Io的几个要点</span></a></li></ol></li></ol></div>
             
 
           </div>

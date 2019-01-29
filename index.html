@@ -334,6 +334,188 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/28/IO/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="isHappyCoder">
+      <meta itemprop="description" content="我是程序员，可以改变世界的那种">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="isHappyCoder">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/28/IO/" class="post-title-link" itemprop="http://yoursite.com/index.html">IO</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-28 15:19:28" itemprop="dateCreated datePublished" datetime="2019-01-28T15:19:28+08:00">2019-01-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-01-29 14:51:31" itemprop="dateModified" datetime="2019-01-29T14:51:31+08:00">2019-01-29</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/java-Io/" itemprop="url" rel="index"><span itemprop="name">java Io</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="java-IO-流"><a href="#java-IO-流" class="headerlink" title="java IO 流"></a>java IO 流</h2><p>​    java中的的流可以分为多种，从读，写的角度可以分为输入，输出流。从操作的单位来说可以分为，字符，字节流。其中字符流是针对处理文字而生。字节流就比较强大，可以处理多种类型的文件。</p>
+<p><strong>字符流常用基类：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Reader</span><br><span class="line"></span><br><span class="line">Writer</span><br></pre></td></tr></table></figure>
+<p><strong>字节流常用基类：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Inputstream</span><br><span class="line"></span><br><span class="line">OutputStream</span><br></pre></td></tr></table></figure>
+<p><strong>这四个类派生出来的子类名通常都是以其父类作为后缀</strong></p>
+<h3 id="使用Io的几个要点"><a href="#使用Io的几个要点" class="headerlink" title="使用Io的几个要点"></a>使用Io的几个要点</h3><p>以<strong>FileWriter</strong>为例。需要注意的是</p>
+<p><strong>1、在Io操作中，一般的写操作都是先将数据写入流（缓冲）中，如果想要将数据写入文件中需要再刷新流（缓冲），刷新缓冲一般使用flush().或close()也可以达到刷新缓冲的效果。flush()与close()的区别是，flush()之后流可以继续使用，close()之后流将不可用。</strong></p>
+<p><strong>2、使用完流资源之后必须关闭流资源。</strong></p>
+<p><strong>3、另需注意。向文件中写入文字时如果想要执行换行在换行处使用“/r/n”。在LINUX系统中系统可以  识别“/n” 来进行换行。但是在windows系统中有部分软件不能识别“/n”,比如记事本就不能识别“/n”，而会出现乱码的情况，所在windows中执行换行就要采用所有软件都能识别的“/r/n”来换行。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public FileWriter(String fileName,</span><br><span class="line">                  boolean append)</span><br><span class="line">           throws IOException根据给定的文件名以及指示是否附加写入数据的 boolean 值来构造 FileWriter 对象。 </span><br><span class="line"></span><br><span class="line">参数：</span><br><span class="line">fileName - 一个字符串，表示与系统有关的文件名。</span><br><span class="line">append - 一个 boolean 值，如果为 true，则将数据写入文件末尾处，而不是写入文件开始处。 </span><br><span class="line">抛出： </span><br><span class="line">IOException - 如果指定文件存在，但它是一个目录，而不是一个常规文件；或者该文件不存在，但无法创建它；抑或因为其他某些原因而无法打开它</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class  IoDemo&#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        FileWriter fw = null;</span><br><span class="line">        try &#123;</span><br><span class="line">                fw = new FileWriter(&quot;/demo.text&quot;,true);</span><br><span class="line">                //write()只是将数据写入流中，如果想将数据写入文件就需要刷新流。</span><br><span class="line">                //执行fluse().或close方法都可以达到刷新流（缓冲的效果）。</span><br><span class="line">                fw.write(&quot;abcd&quot;);</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;finally &#123;</span><br><span class="line">            /*此判断的意义在于：fw可能会初始化失败，比如 fw = new 	FileWriter(&quot;K：//demo.text&quot;,true); 的情况下fw就会初始化失败。但是finally&#123;&#125;内的内容必须要执行，所以在fw = new FileWriter(.....)，出现异常时，fw.close()就会报空指针异常。*/</span><br><span class="line">            if (fw!=null)&#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    fw.close();</span><br><span class="line">                &#125; catch (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/24/异常/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1663,7 +1845,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1684,7 +1866,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1707,7 +1891,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
