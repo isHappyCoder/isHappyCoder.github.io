@@ -108,18 +108,20 @@
 
 
 
-  <meta name="description" content="Propertiesproperties是Hashtable的子类，也就是说它具有和Map集合相似的特点，而且properties中的键值都是String类型。 是集合中与IO相结合的容器。 该对象的特点：可以用于键值对形式的配置文件 1234567891011121314151617181920212223242526272829303132333435363738394041424344454">
+  <meta name="description" content="集合体系 ListList集合体系的特有方法 ​    List中的比较方法都是依赖于被比较对象的的equals()方法。但是自定义的类的equals(),方法的比较都是对象创建的地址，因此如果想要按照自己的逻辑来比较自定义的对象，就需要按照自己的比较逻辑重写equals();** ​     List和Vector的区别： ​        List是异步的线程不安全，但是速度快 ​">
 <meta name="keywords" content="java 集合">
 <meta property="og:type" content="article">
 <meta property="og:title" content="集合">
 <meta property="og:url" content="http://yoursite.com/2019/02/20/集合/index.html">
 <meta property="og:site_name" content="isHappyCoder">
-<meta property="og:description" content="Propertiesproperties是Hashtable的子类，也就是说它具有和Map集合相似的特点，而且properties中的键值都是String类型。 是集合中与IO相结合的容器。 该对象的特点：可以用于键值对形式的配置文件 1234567891011121314151617181920212223242526272829303132333435363738394041424344454">
+<meta property="og:description" content="集合体系 ListList集合体系的特有方法 ​    List中的比较方法都是依赖于被比较对象的的equals()方法。但是自定义的类的equals(),方法的比较都是对象创建的地址，因此如果想要按照自己的逻辑来比较自定义的对象，就需要按照自己的比较逻辑重写equals();** ​     List和Vector的区别： ​        List是异步的线程不安全，但是速度快 ​">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-20T01:52:05.217Z">
+<meta property="og:image" content="http://yoursite.com/2019/02/20/集合/jihe.png">
+<meta property="og:updated_time" content="2019-03-04T07:34:16.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="集合">
-<meta name="twitter:description" content="Propertiesproperties是Hashtable的子类，也就是说它具有和Map集合相似的特点，而且properties中的键值都是String类型。 是集合中与IO相结合的容器。 该对象的特点：可以用于键值对形式的配置文件 1234567891011121314151617181920212223242526272829303132333435363738394041424344454">
+<meta name="twitter:description" content="集合体系 ListList集合体系的特有方法 ​    List中的比较方法都是依赖于被比较对象的的equals()方法。但是自定义的类的equals(),方法的比较都是对象创建的地址，因此如果想要按照自己的逻辑来比较自定义的对象，就需要按照自己的比较逻辑重写equals();** ​     List和Vector的区别： ​        List是异步的线程不安全，但是速度快 ​">
+<meta name="twitter:image" content="http://yoursite.com/2019/02/20/集合/jihe.png">
 
 
 
@@ -377,12 +379,24 @@
                 
               
 
-              <time title="创建时间：2019-02-20 08:45:02 / 修改时间：09:52:05" itemprop="dateCreated datePublished" datetime="2019-02-20T08:45:02+08:00">2019-02-20</time>
+              <time title="创建时间：2019-02-20 08:45:02" itemprop="dateCreated datePublished" datetime="2019-02-20T08:45:02+08:00">2019-02-20</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-04 15:34:16" itemprop="dateModified" datetime="2019-03-04T15:34:16+08:00">2019-03-04</time>
               
             
           </span>
@@ -433,7 +447,21 @@
       
 
       
-        <h2 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h2><p>properties是Hashtable的子类，也就是说它具有和Map集合相似的特点，而且properties中的键值都是String类型。</p>
+        <h2 id="集合体系"><a href="#集合体系" class="headerlink" title="集合体系"></a>集合体系</h2><p><img src="/2019/02/20/集合/jihe.png" alt=""></p>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>List集合体系的特有方法</p>
+<p>​    List中的比较方法都是依赖于被比较对象的的equals()方法。但是自定义的类的equals(),方法的比较都是对象创建的地址，因此如果想要按照自己的逻辑来比较自定义的对象，就需要按照自己的比较逻辑重写equals();<em>**</em></p>
+<p>​     <strong>List和Vector的区别：</strong></p>
+<p>​        <strong>List是异步的线程不安全，但是速度快</strong></p>
+<p>​        <strong>Vector是同步的线程安全，速度慢。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">增：</span><br><span class="line">	add(index,element);</span><br><span class="line">	addAll(index,Collection);</span><br><span class="line">删：</span><br><span class="line">	remove(index)，</span><br><span class="line">改：</span><br><span class="line">	set(index,element);</span><br><span class="line">查：</span><br><span class="line">	get(index);</span><br><span class="line">	subList(from,to);</span><br><span class="line">	listIterator();</span><br></pre></td></tr></table></figure>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>在使用迭代器遍历集合时，想要操作集合中的元素也必须得使用迭代器中的方法，否则，就会出现异常，如下代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">List&lt;User&gt; userList = filter(filterStr);</span><br><span class="line">Iterator iterator = userList.iterator()</span><br><span class="line">while (iterator.hasNext())&#123;</span><br><span class="line">    User user = (User)iterator.next();</span><br><span class="line">    if (user.getUserName()==&quot;zhangSan&quot;)&#123;</span><br><span class="line">        user.setUserEmail(&quot;123&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ListIterator"><a href="#ListIterator" class="headerlink" title="ListIterator"></a>ListIterator</h2><p>List集合为自己提供了一个可以完成一整套增，删，改，查操作的迭代器ListIterator，他是Iterator的子接口。该接口只能通过List集合的ListIerator来获取。</p>
+<h2 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Collection</span><br><span class="line">	|-list</span><br><span class="line">		|—ArrayList</span><br><span class="line">		|-LinkedList</span><br><span class="line">		|-vector</span><br></pre></td></tr></table></figure>
+<p>​    ArrayList  的底层实现原理是可变长度的数组，数组数据结构的特点是<strong>访问元素快</strong>，<strong>插入元素，删除元素慢</strong>，因为数组具有索引，每次增加或删除元素都要将被删除元素的后面的所有元素向前或向后移动，所以数组的删除和增加会慢。访问时可以直接根据索引访问，访问的速度会快写    </p>
+<h3 id="ArrayList的创建规率"><a href="#ArrayList的创建规率" class="headerlink" title="ArrayList的创建规率"></a>ArrayList的创建规率</h3><p>​    ArrayList 的底层是数组，初次创建时容量为10的空列表存储数据，当这10个空间满了之后，会再创建一个列表，新创建的列表的长度会比前一个列表长50%，如果第一个列表的长度是10，第二个列表的长度就是15.当前一个列表满之后就会创建第二个，并且会将前一个列表的数据复制到新创建的列表中，并清空前一个列表。</p>
+<h2 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h2><p>LinkedList的底层是链表结构。链表结构的特点就是，访问元素慢，添加和删除快。</p>
+<h2 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h2><p>properties是Hashtable的子类，也就是说它具有和Map集合相似的特点，而且properties中的键值都是String类型。</p>
 <p>是集合中与IO相结合的容器。</p>
 <p>该对象的特点：可以用于键值对形式的配置文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 需求：用来记录软件的使用次数，如果超过五次就禁止使用，</span><br><span class="line"> * 思路：</span><br><span class="line"> * 1)定义统计次数的变量count，每次使用都+1,count&gt;=5时结束程序</span><br><span class="line"> * 2)避免程序重启将count重新定义，将统计信息以配置文件的形式写入硬盘。</span><br><span class="line"> * */</span><br><span class="line">  public static void timeCount()&#123;</span><br><span class="line">      int count = 0;</span><br><span class="line">      FileWriter fileWriter = null;</span><br><span class="line">      Properties properties = properties = new Properties();;</span><br><span class="line">      File file = new File(&quot;E:\\times.text&quot;);</span><br><span class="line">      try &#123;</span><br><span class="line">          //判断文件不存在则创建file.createNewFile();</span><br><span class="line">          if (!file.exists())&#123;</span><br><span class="line">              file.createNewFile();</span><br><span class="line">              fileWriter = new FileWriter(file);</span><br><span class="line">              fileWriter.write(&quot;times=&quot;+1);</span><br><span class="line">          &#125;</span><br><span class="line">          //按简单的面向行的格式从输入字符流中读取属性列表（键和元素对）</span><br><span class="line">          properties.load(new FileReader(file));</span><br><span class="line"></span><br><span class="line">          //用指定的键在此属性列表中搜索属性。</span><br><span class="line">          String value = properties.getProperty(&quot;times&quot;);</span><br><span class="line">          if (value!=null)&#123;</span><br><span class="line">              count = Integer.parseInt(value);</span><br><span class="line">              if (count&gt;=5)&#123;</span><br><span class="line">                  System.out.println(&quot;使用次数达到5次&quot;);</span><br><span class="line">                  System.exit(-1);</span><br><span class="line">              &#125;</span><br><span class="line">              count++;</span><br><span class="line">              //调用 Hashtable 的方法 put。</span><br><span class="line">              properties.setProperty(&quot;times&quot;,count+&quot;&quot;);</span><br><span class="line">              // 以适合使用 load(Reader) 方法的格式，将此 Properties 表中的属性列表（键和元素对）写入输出字符。</span><br><span class="line">              properties.store(new FileWriter(file),&quot;&quot;);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;catch (IOException e)&#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125;finally &#123;</span><br><span class="line">          if (fileWriter!=null)&#123;</span><br><span class="line">              try &#123;</span><br><span class="line">                  fileWriter.close();</span><br><span class="line">              &#125; catch (IOException e) &#123;</span><br><span class="line">                  e.printStackTrace();</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
@@ -641,7 +669,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Properties"><span class="nav-number">1.</span> <span class="nav-text">Properties</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#集合体系"><span class="nav-number">1.</span> <span class="nav-text">集合体系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">2.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器"><span class="nav-number">3.</span> <span class="nav-text">迭代器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ListIterator"><span class="nav-number">4.</span> <span class="nav-text">ListIterator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList"><span class="nav-number">5.</span> <span class="nav-text">ArrayList</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList的创建规率"><span class="nav-number">5.1.</span> <span class="nav-text">ArrayList的创建规率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LinkedList"><span class="nav-number">6.</span> <span class="nav-text">LinkedList</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Properties"><span class="nav-number">7.</span> <span class="nav-text">Properties</span></a></li></ol></div>
             
 
           </div>
