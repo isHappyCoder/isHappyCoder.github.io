@@ -334,6 +334,192 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/14/jvm/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="isHappyCoder">
+      <meta itemprop="description" content="我是程序员，可以改变世界的那种">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="isHappyCoder">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/14/jvm/" class="post-title-link" itemprop="http://yoursite.com/index.html">jvm</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-14 18:54:05 / 修改时间：19:05:43" itemprop="dateCreated datePublished" datetime="2019-03-14T18:54:05+08:00">2019-03-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><h3 id="系统虚拟机"><a href="#系统虚拟机" class="headerlink" title="系统虚拟机"></a>系统虚拟机</h3><h4 id="一、什么是系统虚拟机："><a href="#一、什么是系统虚拟机：" class="headerlink" title="一、什么是系统虚拟机："></a>一、什么是系统虚拟机：</h4><p>​    模仿计算机硬件环境及网络环境的虚拟环境</p>
+<h4 id="二、常用的系统虚拟机"><a href="#二、常用的系统虚拟机" class="headerlink" title="二、常用的系统虚拟机"></a>二、常用的系统虚拟机</h4><p>​    >VirtualBox</p>
+<p>​    >VMare</p>
+<h4 id="三、虚拟机的三种连接形式"><a href="#三、虚拟机的三种连接形式" class="headerlink" title="三、虚拟机的三种连接形式"></a>三、虚拟机的三种连接形式</h4><p>​    vmnet(桥接模式)：生成的虚拟网卡为vmnet0，虚拟机与主节点的网段相同,内网节点间可以通信，也可以使用主节点的外网。</p>
+<p>​    Hostonly(仅主机模式):生成的虚拟网卡为vmnet1，虚拟机与主节点的网段想同，内网节点间可以通信，但是不能连接外网。</p>
+<p>   NAT(网路地址转换模式):生成的虚拟网卡为vmnet8，可以自动转换网络地址，虚拟机之间可以通信，也可以使用外网。</p>
+<h3 id="程序虚拟机"><a href="#程序虚拟机" class="headerlink" title="程序虚拟机"></a>程序虚拟机</h3><h3 id="一、jvm就是程序虚拟机："><a href="#一、jvm就是程序虚拟机：" class="headerlink" title="一、jvm就是程序虚拟机："></a>一、jvm就是程序虚拟机：</h3><p>​    jvm的虚拟机是Hostpost</p>
+<h4 id="二、垃圾回收的算法："><a href="#二、垃圾回收的算法：" class="headerlink" title="二、垃圾回收的算法："></a>二、垃圾回收的算法：</h4><p>​        复制算法：将内存分为两块相等的区域，每次只使用其中的一块区域，将正在使用的区域（a）复制到空闲的区域中（b），清空复制之前的区域（a），不断重复此过程就是复制算法。</p>
+<p>​          在垃圾回收中的场景：假设一开始创建了100个对象，经历过一次GC后有90个对象还活着，进入了s0区。</p>
+<p>​          第二次GC时s0中的90个对象还存活80个，那么将这80个存活的对象复制到s1区，清空S0区。</p>
+<p>​          第三次GC将s1中的80个对象还存活60个，那么将存活的60个对象复制到s0中，再清空s1，不断地重复此过程这就是复制算法</p>
+<h3 id="三、jvm的主要结构："><a href="#三、jvm的主要结构：" class="headerlink" title="三、jvm的主要结构："></a>三、jvm的主要结构：</h3><p>​     堆：（线程共享的）</p>
+<p>​        主要用来存放数据，即数据怎么放，放在哪。</p>
+<p>​    </p>
+<p>​    栈：（线程私有的，即每一个线程都会开辟一个不同的栈）</p>
+<p>​        变量的引用</p>
+<p>​        存放临时变量</p>
+<p>​        存放解决的是程序的运行问题，即怎么执行，或如何处理数据。</p>
+<p>​    </p>
+<p>​    方法区：（线程共享的）</p>
+<p>​        是辅助堆栈的一块永久区，解决堆栈的信息产生，比如我们创建一个User对象，User类的一些信息（类信息，静态信息都回存在方法区中）。</p>
+<h2 id="堆结构"><a href="#堆结构" class="headerlink" title="堆结构"></a>堆结构</h2><p>堆分为：新生代区域，和老年代区域（按照GC的回收次数划分）</p>
+<p>​          新生代：分为eden(伊甸园)，和s0（form）、s1（to）</p>
+<p>​          eden：新创建的对象存放在eden中</p>
+<p>​         s0，s1：经历过1次GC的对象存放在s0或s1中    </p>
+<p>  老年代：jvm默认经历过15次GC的对像会被存放进老年代。</p>
+<h2 id="JVM内存结构"><a href="#JVM内存结构" class="headerlink" title="JVM内存结构"></a>JVM内存结构</h2><p><img src="/2019/03/14/jvm/clipboard.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/集合/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2302,7 +2488,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2329,7 +2515,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2358,7 +2546,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
