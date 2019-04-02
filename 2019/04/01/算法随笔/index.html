@@ -108,27 +108,29 @@
 
 
 
-  <meta name="description" content="关于异常的一些总结并不是所有的异常都可以抛出去，举一个例子说明一下。  上面的例子就是一种只能捕获不能抛出的情况，正常情况下，使用wait(),需要处理一个InterruptException，但是，上述例子中的run(),是通过实现Runnable接口实现的，被复写的run()，没有抛异常，所以复写后的run(),也不能抛异常，否则会出现编译错误，这种情况下的异常只能try">
-<meta name="keywords" content="Exception">
+  <meta name="description" content="遍历二叉树先序遍历二叉树的遍历根据遍历根节点的顺序的不同可分为三种：先序，中序，后序遍历以下面的数为例：  比如上图正常的一个满节点，A：根节点、B：左节点、C：右节点，前序顺序是ABC（根节点排最先，然后同级先左后右）；中序顺序是BAC(先左后根最后右）；后序顺序是BCA（先左后右最后根）。  比如上图二叉树遍历结果 ​    前序遍历：ABCDEFGHK ​    中序遍历：BDCAEHGKF">
+<meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="异常">
-<meta property="og:url" content="http://yoursite.com/2019/01/24/异常/index.html">
+<meta property="og:title" content="算法随笔">
+<meta property="og:url" content="http://yoursite.com/2019/04/01/算法随笔/index.html">
 <meta property="og:site_name" content="isHappyCoder">
-<meta property="og:description" content="关于异常的一些总结并不是所有的异常都可以抛出去，举一个例子说明一下。  上面的例子就是一种只能捕获不能抛出的情况，正常情况下，使用wait(),需要处理一个InterruptException，但是，上述例子中的run(),是通过实现Runnable接口实现的，被复写的run()，没有抛异常，所以复写后的run(),也不能抛异常，否则会出现编译错误，这种情况下的异常只能try">
+<meta property="og:description" content="遍历二叉树先序遍历二叉树的遍历根据遍历根节点的顺序的不同可分为三种：先序，中序，后序遍历以下面的数为例：  比如上图正常的一个满节点，A：根节点、B：左节点、C：右节点，前序顺序是ABC（根节点排最先，然后同级先左后右）；中序顺序是BAC(先左后根最后右）；后序顺序是BCA（先左后右最后根）。  比如上图二叉树遍历结果 ​    前序遍历：ABCDEFGHK ​    中序遍历：BDCAEHGKF">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2019/01/24/异常/异常举例说明.png">
-<meta property="og:updated_time" content="2019-01-24T11:27:51.553Z">
+<meta property="og:image" content="http://yoursite.com/2019/04/01/算法随笔/D:算法随笔/简单二叉树.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/01/算法随笔/D:算法随笔/复杂二叉树.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/01/算法随笔/D:算法随笔/图解中序遍历.png">
+<meta property="og:updated_time" content="2019-04-01T10:39:25.251Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="异常">
-<meta name="twitter:description" content="关于异常的一些总结并不是所有的异常都可以抛出去，举一个例子说明一下。  上面的例子就是一种只能捕获不能抛出的情况，正常情况下，使用wait(),需要处理一个InterruptException，但是，上述例子中的run(),是通过实现Runnable接口实现的，被复写的run()，没有抛异常，所以复写后的run(),也不能抛异常，否则会出现编译错误，这种情况下的异常只能try">
-<meta name="twitter:image" content="http://yoursite.com/2019/01/24/异常/异常举例说明.png">
+<meta name="twitter:title" content="算法随笔">
+<meta name="twitter:description" content="遍历二叉树先序遍历二叉树的遍历根据遍历根节点的顺序的不同可分为三种：先序，中序，后序遍历以下面的数为例：  比如上图正常的一个满节点，A：根节点、B：左节点、C：右节点，前序顺序是ABC（根节点排最先，然后同级先左后右）；中序顺序是BAC(先左后根最后右）；后序顺序是BCA（先左后右最后根）。  比如上图二叉树遍历结果 ​    前序遍历：ABCDEFGHK ​    中序遍历：BDCAEHGKF">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/01/算法随笔/D:算法随笔/简单二叉树.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/24/异常/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/01/算法随笔/">
 
 
 
@@ -138,7 +140,7 @@
   };
 </script>
 
-  <title>异常 | isHappyCoder</title>
+  <title>算法随笔 | isHappyCoder</title>
   
 
 
@@ -337,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/24/异常/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/01/算法随笔/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="isHappyCoder">
@@ -354,7 +356,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">异常
+          <h1 class="post-title" itemprop="name headline">算法随笔
               
             
           </h1>
@@ -379,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2019-01-24 16:11:21 / 修改时间：19:27:51" itemprop="dateCreated datePublished" datetime="2019-01-24T16:11:21+08:00">2019-01-24</time>
+              <time title="创建时间：2019-04-01 18:10:48 / 修改时间：18:39:25" itemprop="dateCreated datePublished" datetime="2019-04-01T18:10:48+08:00">2019-04-01</time>
             
 
             
@@ -401,7 +403,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Exception/" itemprop="url" rel="index"><span itemprop="name">Exception</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/算法随笔/" itemprop="url" rel="index"><span itemprop="name">算法随笔</span></a></span>
 
                 
                 
@@ -435,10 +437,19 @@
       
 
       
-        <h2 id="关于异常的一些总结"><a href="#关于异常的一些总结" class="headerlink" title="关于异常的一些总结"></a>关于异常的一些总结</h2><p>并不是所有的异常都可以<strong>抛出去</strong>，举一个例子说明一下。</p>
-<p><img src="/2019/01/24/异常/异常举例说明.png" alt="异常举例说明"></p>
-<p>上面的例子就是一种只能捕获不能抛出的情况，正常情况下，使用<strong>wait()</strong>,需要处理一个<strong>InterruptException</strong>，但是，上述例子中的<strong>run()</strong>,是通过实现<strong>Runnable</strong>接口实现的，被复写的<strong>run()</strong>，没有抛异常，所以复写后的<strong>run()</strong>,也不能抛异常，否则会出现编译错误，这种情况下的异常只能<strong>try</strong></p>
-
+        <h2 id="遍历二叉树"><a href="#遍历二叉树" class="headerlink" title="遍历二叉树"></a>遍历二叉树</h2><h3 id="先序遍历"><a href="#先序遍历" class="headerlink" title="先序遍历"></a>先序遍历</h3><p>二叉树的遍历根据遍历根节点的顺序的不同可分为三种：先序，中序，后序遍历以下面的数为例：</p>
+<p><img src="/2019/04/01/算法随笔/D:算法随笔/简单二叉树.png" alt=""></p>
+<p>比如上图正常的一个满节点，A：根节点、B：左节点、C：右节点，前序顺序是ABC（根节点排最先，然后同级先左后右）；中序顺序是BAC(先左后根最后右）；后序顺序是BCA（先左后右最后根）。</p>
+<p><img src="/2019/04/01/算法随笔/D:算法随笔/复杂二叉树.png" alt=""></p>
+<p>比如上图二叉树遍历结果</p>
+<p>​    前序遍历：ABCDEFGHK</p>
+<p>​    中序遍历：BDCAEHGKF</p>
+<p>​    后序遍历：DCBHKGFEA</p>
+<p><img src="/2019/04/01/算法随笔/D:算法随笔/图解中序遍历.png" alt=""></p>
+<p>使用Java代码实现二叉树的遍历：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">//构建二叉树</span><br><span class="line">public class Node &#123;</span><br><span class="line">    private int data;</span><br><span class="line">    private Node leftNode;//左节点</span><br><span class="line">    private Node rightNode;//右节点</span><br><span class="line">    </span><br><span class="line">    public Node(int data, Node leftNode, Node rightNode)&#123;</span><br><span class="line">        this.data = data;</span><br><span class="line">        this.leftNode = leftNode;</span><br><span class="line">        this.rightNode = rightNode;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getData() &#123;</span><br><span class="line">        return data;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setData(int data) &#123;</span><br><span class="line">        this.data = data;</span><br><span class="line">    &#125;</span><br><span class="line">    public Node getLeftNode() &#123;</span><br><span class="line">        return leftNode;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setLeftNode(Node leftNode) &#123;</span><br><span class="line">        this.leftNode = leftNode;</span><br><span class="line">    &#125;</span><br><span class="line">    public Node getRightNode() &#123;</span><br><span class="line">        return rightNode;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setRightNode(Node rightNode) &#123;</span><br><span class="line">        this.rightNode = rightNode;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>遍历二叉树：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">//遍历二叉树：</span><br><span class="line">public class TreeTest &#123;</span><br><span class="line">    public Node init() &#123;//注意必须逆序建立，先建立子节点，再逆序往上建立，因为非叶子结点会使用到下面的节点，而初始化是按顺序初始化的，不逆序建立会报错</span><br><span class="line">        Node J = new Node(8, null, null);</span><br><span class="line">        Node H = new Node(4, null, null);</span><br><span class="line">        Node G = new Node(2, null, null);</span><br><span class="line">        Node F = new Node(7, null, J);</span><br><span class="line">        Node E = new Node(5, H, null);</span><br><span class="line">        Node D = new Node(1, null, G);</span><br><span class="line">        Node C = new Node(9, F, null);</span><br><span class="line">        Node B = new Node(3, D, E);</span><br><span class="line">        Node A = new Node(6, B, C);</span><br><span class="line">        return A;   //返回根节点</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void printNode(Node node)&#123;</span><br><span class="line">        System.out.print(node.getData());</span><br><span class="line">    &#125;</span><br><span class="line">	//先序遍历</span><br><span class="line">    public void theFirstTraversal(Node root) &#123;</span><br><span class="line">        printNode(root);</span><br><span class="line">        if (root.getLeftNode() != null) &#123;</span><br><span class="line">            theFirstTraversal(root.getLeftNode());</span><br><span class="line">        &#125;</span><br><span class="line">        if (root.getRightNode() != null) &#123;</span><br><span class="line">            theFirstTraversal(root.getRightNode());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        TreeTest tree = new TreeTest();</span><br><span class="line">        Node root = tree.init();</span><br><span class="line">        tree.theFirstTraversal(root);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -461,7 +472,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Exception/" rel="tag"># Exception</a>
+            <a href="/tags/算法/" rel="tag"># 算法</a>
           
         </div>
       
@@ -474,8 +485,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/17/多线程/" rel="next" title="多线程">
-                <i class="fa fa-chevron-left"></i> 多线程
+              <a href="/2019/03/14/jvm/" rel="next" title="jvm">
+                <i class="fa fa-chevron-left"></i> jvm
               </a>
             
           </div>
@@ -483,10 +494,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/28/IO/" rel="prev" title="IO">
-                IO <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -655,7 +662,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于异常的一些总结"><span class="nav-number">1.</span> <span class="nav-text">关于异常的一些总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历二叉树"><span class="nav-number">1.</span> <span class="nav-text">遍历二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#先序遍历"><span class="nav-number">1.1.</span> <span class="nav-text">先序遍历</span></a></li></ol></li></ol></div>
             
 
           </div>
